@@ -139,3 +139,14 @@ a {
 a:hover {
     color: var(--accent-secondary);
 }
+
+.content-section {
+    position: relative;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 12px rgba(63, 202, 255, 0.05);
+}
+
+.content-section:hover {
+    box-shadow: 0 0 20px rgba(63, 202, 255, 0.4), 0 0 40px rgba(255, 0, 200, 0.1);
+    transform: translateY(-4px);
+}
