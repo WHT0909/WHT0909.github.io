@@ -96,10 +96,11 @@
         <li onclick="showSection('education')">教育背景</li>
         <li onclick="showSection('research')">科研经历</li>
         <li onclick="showSection('papers')">论文成果</li>
+        <li onclick="showSection('projects')">其他项目</li>
         <li onclick="showSection('contact')">联系方式</li>
       </ul>
     </nav>
-    <button class="download-btn" onclick="window.open('resume.pdf', '_blank')">下载简历 PDF</button>
+    <!-- <button class="download-btn" onclick="window.open('resume.pdf', '_blank')">下载简历 PDF</button> -->
   </aside>
 
   <main>
@@ -116,7 +117,7 @@
     <section id="education" class="content-section" style="display: none;">
   <h2>教育背景</h2>
   <p style="font-size: 1.1rem; line-height: 1.8;"><strong>四川大学</strong>（2022.09——至今）</p>
-  <ul style="font-size: 1.05rem; line-height: 1.8;">
+  <ul style="font-size: 1.05rem; line-height: 3;">
     <li><a href="https://bme.scu.edu.cn/" target="_blank">生物医学工程学院</a> 医学信息工程专业</li>
     <li>绩点：3.59 / 4，成绩排名：13 / 51</li>
     <li>CET-4: 606</li>
@@ -143,7 +144,7 @@
 
     <section id="papers" class="content-section" style="display: none;">
   <h2>论文与竞赛成果</h2>
-  <ul style="font-size: 1.05rem; line-height: 1.8;">
+  <ul style="font-size: 1.05rem; line-height: 3;">
     <li>Biochemistry (<strong>第一作者</strong>，预接收，中科院三区，IF=2.9)</li>
     <li>Li, R.; <strong>Wang, H.</strong>; Yu, Q.; Cai, J.; Jiang, L.; Luo, X.; Zou, Q.; Lv, Z. AOPxSVM: A Support Vector Machine for Identifying Antioxidant Peptides Using a Block Substitution Matrix and Amino Acid Composition, Transformation, and Distribution Embeddings. Foods 2025, 14, 2014. https://doi.org/10.3390/foods14122014(<strong>第二作者</strong>，中科院二区，IF=4.7)</li>
     <a href="https://www.mdpi.com/2304-8158/14/12/2014" target="_blank">查看文献</a>
@@ -152,6 +153,32 @@
     <li>第十六届全国大学生数学竞赛（非数学A类）<strong>省二等奖</strong></li>
     <li>第十六届蓝桥杯大赛软件赛（C/C++A组）<strong>省三等奖</strong></li>
   </ul>
+</section>
+
+<section id="projects" class="content-section" style="display: none;">
+  <h2>其他项目</h2>
+  <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+    <div style="background-color: rgba(0,0,0,0.2); padding: 1rem; border-radius: 10px;">
+      <strong><a href="https://github.com/shangshulin/MyPhotoshop" target="_blank">MyPhotoshop</a></strong><br>
+      一个基于 MFC 的图像处理软件，支持图像滤波、边缘检测、直方图匹配、图像风格化等多种功能。<br>
+      <em>技术栈：C++、MFC、图像处理算法</em>
+    </div>
+    <div style="background-color: rgba(0,0,0,0.2); padding: 1rem; border-radius: 10px;">
+      <strong><a href="https://github.com/WHT0909/BlackSnake" target="_blank">BlackSnake</a></strong><br>
+      一款基于 tkinter 开发的贪吃蛇游戏，支持方向键控制、计分与游戏结束检测。<br>
+      <em>技术栈：Python、tkinter、面向对象编程</em>
+    </div>
+    <div style="background-color: rgba(0,0,0,0.2); padding: 1rem; border-radius: 10px;">
+      <strong><a href="https://github.com/WHT0909/Caiyan_Cibian" target="_blank">Caiyan_Cibian</a></strong><br>
+      自动破解“词变”网页游戏，结合字典路径搜索与页面颜色反馈，实现词语逐步变换路径自动求解。<br>
+      <em>技术栈：Python、Selenium、BFS 图搜索、网页自动化</em>
+    </div>
+    <div style="background-color: rgba(0,0,0,0.2); padding: 1rem; border-radius: 10px;">
+      <strong><a href="https://github.com/WHT0909/Caiyan_XunHuaLingGuesser" target="_blank">Caiyan_XunHuaLingGuesser</a></strong><br>
+      自动化猜测“寻花令”古诗词脚本，根据颜色提示反馈筛选最优诗句。适用于游戏自动化挑战。<br>
+      <em>技术栈：Python、Selenium、正则匹配、数据清洗</em>
+    </div>
+  </div>
 </section>
 
     <section id="contact" class="content-section" style="display: none;">
