@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Hexo常用指令记录</title>
+    <link href="/2025/07/24/Hexo%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E8%AE%B0%E5%BD%95/"/>
+    <url>/2025/07/24/Hexo%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Hexo常用指令记录"><a href="#Hexo常用指令记录" class="headerlink" title="Hexo常用指令记录"></a>Hexo常用指令记录</h1><p>这篇博客参考了以下文章，如有侵权请联系作者，作者将立刻删除： </p><p><a href="https://www.cnblogs.com/junlin623/p/17410016.html">Windows下hexo个人博客详细搭建教程</a></p><p><a href="https://blog.csdn.net/vpqtxzmzezeqjj9977/article/details/122982320">Hexo的常用指令合集</a></p><p>作者的第一版个人网站是使用 <code>html</code> &amp;&amp; <code>JavaScript</code> 编写的，由于编程技术有限，做得比较简陋，且不方便管理和互动，于是想通过<code>Hexo</code>框架重新整理一下内容，顺便记录学习历程。</p><h2 id="（1）hexo-new-“博客名”"><a href="#（1）hexo-new-“博客名”" class="headerlink" title="（1）hexo new “博客名”"></a>（1）hexo new “博客名”</h2><p><strong>新建名为“博客名”的文章</strong>，文章将存于<code>.source/_posts</code>文件夹下</p><p>可以通过<code>code 博客名.md</code>在vscode中编辑文章内容</p><p>编辑完成后，使用<code>cd ../..</code>退回至blog文件夹，依次运行以下代码重新生成</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo g<br>hexo s<br></code></pre></td></tr></table></figure><h2 id="（2）hexo-g-或-hexo-generate"><a href="#（2）hexo-g-或-hexo-generate" class="headerlink" title="（2）hexo g 或 hexo generate"></a>（2）hexo g 或 hexo generate</h2><p>该指令的主要作用是<strong>生成静态网页文件</strong></p><p>在本地编写完新文章或者修改了文章内容、主题配置等之后，执行 <code>hexo g</code> 生成最新的静态网页，然后使用 <code>hexo s</code>（hexo server 的缩写，用于启动本地服务器 ）启动本地服务器，在浏览器中访问本地地址（如 <a href="http://localhost:4000/">http://localhost:4000</a> ），就能看到最新的博客效果。</p><p><code>hexo g</code> 通常会和其他指令配合使用，比如：</p><ul><li><code>hexo clean</code>：在执行 hexo g 之前，有时会先运行 hexo clean 指令，它会清空 public 文件夹中的内容。这样做是为了确保每次生成的静态文件都是最新的，避免因为之前生成的文件残留而导致的显示异常。</li><li><code>hexo d</code>：hexo d 是 hexo deploy 的缩写，用于将生成好的静态文件（位于 public 文件夹 ）部署到指定的线上服务（如 GitHub Pages 等 ）。一般在执行完 hexo g 生成静态文件之后，再执行 hexo d 就能把博客发布到线上。不过，使用 hexo d 之前需要先在配置文件中正确配置部署相关的信息，如远程仓库地址、认证信息等。</li></ul><h2 id="（3）hexo-clean"><a href="#（3）hexo-clean" class="headerlink" title="（3）hexo clean"></a>（3）hexo clean</h2><p><code>hexo clean</code> 指令的作用是<strong>清理缓存文件和之前生成的静态文件</strong></p><p>在执行 <code>hexo g</code> 之前，最好先运行 <code>hexo clean</code> 清理缓存和旧的静态文件，避免因为缓存或旧文件的干扰，导致网页显示的内容与预期不符</p><h2 id="（4）hexo-s-或-hexo-server"><a href="#（4）hexo-s-或-hexo-server" class="headerlink" title="（4）hexo s 或 hexo server"></a>（4）hexo s 或 hexo server</h2><p>用于<strong>启动服务</strong>，默认地址为4000端口</p><h2 id="（5）hexo-d-或-hexo-deploy"><a href="#（5）hexo-d-或-hexo-deploy" class="headerlink" title="（5）hexo d 或 hexo deploy"></a>（5）hexo d 或 hexo deploy</h2><p>其核心作用是<strong>将本地生成的静态文件自动部署到远程服务器或托管平台</strong>，实现博客内容的在线发布。</p><h2 id="（6）删除-修改博客"><a href="#（6）删除-修改博客" class="headerlink" title="（6）删除 &#x2F; 修改博客"></a>（6）删除 &#x2F; 修改博客</h2><p>删除博客时，需要将<code>.source/_posts</code>下的文章.md文件删除，再依次执行以下指令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo g<br>hexo s<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2025/07/24/hello-world/"/>
+    <url>/2025/07/24/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
