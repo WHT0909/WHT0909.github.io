@@ -1,0 +1,9 @@
+/* 图片标注样式 */
+.image-caption {
+  display: block;
+  text-align: center;
+  color: #999;
+  font-size: 0.9em;
+  margin-top: 8px;
+  /* font-style: italic; */
+}
