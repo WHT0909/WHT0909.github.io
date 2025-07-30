@@ -7,3 +7,9 @@
   margin-top: 8px;
   /* font-style: italic; */
 }
+
+/* Welcome 标题花体 */
+#subtitle {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem; /* 可能需要调大字号 */
+}
