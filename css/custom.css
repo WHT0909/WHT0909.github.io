@@ -13,3 +13,17 @@
   font-family: 'Great Vibes', cursive;
   font-size: 2.5rem; /* 可能需要调大字号 */
 }
+
+/* 柔和橙色提示块 */
+.notice-card {
+  background-color: #fff7e6; /* 柔和橙色背景 */
+  border-left: 5px solid #ffa940; /* 深一点的橙色边框 */
+  padding: 16px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #663c00; /* 暖棕色文字 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* 轻微阴影增强卡片感 */
+}
