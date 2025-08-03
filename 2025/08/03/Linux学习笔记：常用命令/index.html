@@ -23,22 +23,22 @@
   <meta name="author" content="Wang Haotian">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文将记录 Docker 镜像的构建与运行过程">
+    <meta name="description" content="整理一些常用的 Linux 命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker学习笔记(1)：镜像的构建与运行">
-<meta property="og:url" content="http://wht0909.github.io/2025/08/01/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1-%EF%BC%9A%E9%95%9C%E5%83%8F%E7%9A%84%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C/index.html">
+<meta property="og:title" content="Linux学习笔记：常用命令">
+<meta property="og:url" content="http://wht0909.github.io/2025/08/03/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="王颢天的博客">
-<meta property="og:description" content="本文将记录 Docker 镜像的构建与运行过程">
+<meta property="og:description" content="整理一些常用的 Linux 命令">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-08-01T14:45:20.000Z">
-<meta property="article:modified_time" content="2025-08-01T15:36:16.000Z">
+<meta property="article:published_time" content="2025-08-03T14:14:37.000Z">
+<meta property="article:modified_time" content="2025-08-03T15:45:34.000Z">
 <meta property="article:author" content="Wang Haotian">
-<meta property="article:tag" content="docker">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Docker学习笔记(1)：镜像的构建与运行 - 王颢天的博客</title>
+  <title>Linux学习笔记：常用命令 - 王颢天的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -208,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Docker学习笔记(1)：镜像的构建与运行"></span>
+            <span id="subtitle" data-typed-text="Linux学习笔记：常用命令"></span>
           
         </div>
 
@@ -219,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-01 22:45" pubdate>
-          August 1, 2025 pm
+        <time datetime="2025-08-03 22:14" pubdate>
+          August 3, 2025 pm
         </time>
       </span>
     
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          878 words
+          521 words
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          8 mins
+          5 mins
         
       </span>
     
@@ -279,72 +279,127 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Docker学习笔记(1)：镜像的构建与运行</h1>
+            <h1 id="seo-header">Linux学习笔记：常用命令</h1>
             
             
               <div class="markdown-body">
                 
-                <h1
-id="docker学习笔记1镜像的构建与运行">Docker学习笔记(1)：镜像的构建与运行</h1>
-<p>本文参考了以下文章 / 资源，如有侵权请联系作者，作者将立刻删除：</p>
+                <h1 id="linux学习笔记常用命令">Linux学习笔记：常用命令</h1>
+<p>本文参考了以下文章 / 资源：</p>
 <p><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1THKyzBER6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=0ea0c7956df75b2935422822b2001158">40分钟的Docker实战攻略，一期视频精通Docker</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18Ztme2E1u/?spm_id_from=333.337.search-card.all.click&amp;vd_source=0ea0c7956df75b2935422822b2001158">深度学习入门老司机必备，利用Docker快速构建深度学习镜像，实现开箱即用的深度学习环境</a></p>
-<p>作者在搭建机器学习实验环境时，常遇到这样的问题：通常情况下本地需要搭建一个环境，调试代码能否正常运行；而真正的计算过程往往在服务器上进行，又需要搭一次环境，并不便捷而且增加了时间成本；而且有时会忘记搭建过程中的某些细节（如版本号对应等）导致各种报错。Docker
-就提供了一种这样的部署方式：<strong>只需在本地搭建一次环境，在其他机器上运行时，可以直接“获取”这个环境并运行，非常的方便</strong>。这就是这篇笔记要解决的问题。</p>
-<h2 id="什么是-docker">(1) 什么是 Docker</h2>
-<p>Docker
-是一种通过容器化技术，为应用程序封装独立的运行环境，每个运行环境就是一个<strong>容器</strong>，运行容器的计算机称为<strong>宿主机</strong></p>
-<p><strong>镜像</strong>是容器的模板，镜像和容器的关系类似于用模具（镜像）做糕点（容器）</p>
-<p><strong>Docker 仓库</strong>是用来保存、分享镜像的地方，Docker
-的官方仓库是 Docker hub</p>
-<h2 id="准备项目文件">(2) 准备项目文件</h2>
-<p>我们以一个 Python 项目为例，将其封装为一个镜像，项目结构如下：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">weather_cli/<br>├── app.py<br>├── requirements.txt<br>└── Dockerfile<br></code></pre></td></tr></table></figure></p>
-<p>这个项目的功能是：获取某个城市的天气</p>
-<p><code>app.py</code>文件内容如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_weather</span>(<span class="hljs-params">city: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>    url = <span class="hljs-string">f&quot;https://wttr.in/<span class="hljs-subst">&#123;city&#125;</span>?format=3&quot;</span><br>    <span class="hljs-keyword">try</span>:<br>        r = requests.get(url, timeout=<span class="hljs-number">10</span>)<br>        r.raise_for_status()<br>        <span class="hljs-built_in">print</span>(r.text.strip())<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;获取天气失败:&quot;</span>, e, file=sys.stderr)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    city = sys.argv[<span class="hljs-number">1</span>] <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(sys.argv) &gt; <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;Beijing&quot;</span><br>    get_weather(city)<br></code></pre></td></tr></table></figure>
-<p><code>requirements.txt</code>文件内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">requests==2.31.0<br></code></pre></td></tr></table></figure>
-<p>除了项目文件外，还需要一个 Dockerfile 文件，Dockerfile
-描述了镜像的具体构建过程，计算机通过执行该文件内容构建镜像</p>
-<p>Dockerfile 内容如下： <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-comment"># 使用官方 Python 3.11 运行镜像作为基础</span><br><span class="hljs-keyword">FROM</span> python:<span class="hljs-number">3.11</span>-slim<br><br><span class="hljs-comment"># 设置工作目录</span><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /app</span><br><br><span class="hljs-comment"># 先把 requirements 复制进去，利用缓存</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> requirements.txt .</span><br><br><span class="hljs-comment"># 安装依赖</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> pip install --no-cache-dir -r requirements.txt</span><br><br><span class="hljs-comment"># 复制应用代码</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> app.py .</span><br><br><span class="hljs-comment"># 容器启动时执行的命令</span><br><span class="hljs-keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="hljs-string">&quot;python&quot;</span>, <span class="hljs-string">&quot;app.py&quot;</span>]</span><br></code></pre></td></tr></table></figure></p>
-<h2 id="构建镜像">(3) 构建镜像</h2>
-<p>cd 到 项目文件夹中，使用以下指令构建镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker build [OPTIONS] PATH | URL | -<br></code></pre></td></tr></table></figure>
-<p>通常我们只需使用 -t 指定镜像名称，例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker build -t weather-cli:1.0 .<br></code></pre></td></tr></table></figure>
-<p>后面的<code>.</code>即为当前目录，意思是：把这个目录里的所有文件当作构建材料，交给
-Docker 引擎去处理。</p>
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1jT421e7CY/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=0ea0c7956df75b2935422822b2001158">Linux入门
+｜ 真实服务器环境演示Linux命令行操作</a></p>
+<h2 id="linux-文件目录管理">(1) Linux 文件目录管理</h2>
+<h3 id="常用的文件管理指令">常用的文件管理指令</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">指令</th>
+<th style="text-align: center;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">ls -l 和 ll</td>
+<td style="text-align: center;">用于显示文件属性，ls -l 是 ll
+的简略版</td>
+</tr>
+<tr>
+<td style="text-align: center;">cd</td>
+<td style="text-align: center;">切换目录</td>
+</tr>
+<tr>
+<td style="text-align: center;">ls -al</td>
+<td style="text-align: center;">查看当前路径下的所有文件</td>
+</tr>
+<tr>
+<td style="text-align: center;">pwd</td>
+<td style="text-align: center;">查看当前所在目录</td>
+</tr>
+<tr>
+<td style="text-align: center;">mkdir 文件夹名</td>
+<td style="text-align: center;">新建文件夹</td>
+</tr>
+<tr>
+<td style="text-align: center;">tree</td>
+<td style="text-align: center;">以树形方式展示当前目录结构</td>
+</tr>
+<tr>
+<td style="text-align: center;">touch 文件名</td>
+<td style="text-align: center;">新建文件</td>
+</tr>
+<tr>
+<td style="text-align: center;">ln -s 文件名 链接名</td>
+<td style="text-align: center;">建立链接</td>
+</tr>
+<tr>
+<td style="text-align: center;">chmod +w/r/x 文件名</td>
+<td style="text-align: center;">修改文件权限</td>
+</tr>
+<tr>
+<td style="text-align: center;">chown 所属用户:属组 _fileName</td>
+<td style="text-align: center;">修改文件所属用户及属组</td>
+</tr>
+<tr>
+<td style="text-align: center;">find 目录 -name 文件名</td>
+<td style="text-align: center;">找文件</td>
+</tr>
+<tr>
+<td style="text-align: center;">cp 原文件名 复制的文件名</td>
+<td style="text-align: center;">复制文件</td>
+</tr>
+<tr>
+<td style="text-align: center;">scp [选项] [源文件] [目标路径]</td>
+<td style="text-align: center;">linux 服务器之间传文件</td>
+</tr>
+<tr>
+<td style="text-align: center;">mv 文件名 目录</td>
+<td style="text-align: center;">移动文件</td>
+</tr>
+<tr>
+<td style="text-align: center;">rm 文件名</td>
+<td style="text-align: center;">删除文件</td>
+</tr>
+<tr>
+<td style="text-align: center;">rm -r 目录</td>
+<td style="text-align: center;">递归删除目录里的文件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="部分命令演示">部分命令演示</h3>
 <p><img
-src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754062233529.png" srcset="/img/loading.gif" lazyload /></p>
+src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754231329432.png" srcset="/img/loading.gif" lazyload /></p>
 <p class="image-caption">
-图 1：构建镜像
+图 1：ls -l 命令
 </p>
-<h2 id="推送到-docker-hub">(4) 推送到 Docker Hub</h2>
-<p>依次运行下列指令将构建好的镜像推送至 Docker hub:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker tag weather-cli:1.0 你的用户名/weather-cli:1.0<br>docker push 你的用户名/weather-cli:1.0<br></code></pre></td></tr></table></figure>
+<p>其中 w 表示可写， r 表示可读， x 表示可执行， -
+表示没有对应的权限</p>
+<p>第一个位置如果是 -
+就代表这是目录文件。剩下的每三个字符为一组，分别表示属主权限、属组权限、其他用户权限。属主权限和属组权限分别对应
+<code>ls -l</code> 命令输出的第 3、4
+列，其他用户权限就是既不是属主，也不属于属组的所有其他用户（包括系统上的其他账户）拥有的权限</p>
 <p><img
-src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754062293599.png" srcset="/img/loading.gif" lazyload /></p>
+src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754232903243.png" srcset="/img/loading.gif" lazyload /></p>
 <p class="image-caption">
-图 2：推送镜像
+图 2：ln -s _fileName _linkName 命令建立链接
 </p>
-<p>在我们的镜像仓库中即可看到刚刚推送的镜像</p>
 <p><img
-src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754062395881.png" srcset="/img/loading.gif" lazyload /></p>
+src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754233155374.png" srcset="/img/loading.gif" lazyload /></p>
 <p class="image-caption">
-图 3：镜像仓库界面
+图 3：chmod +_ _fileName 命令修改文件权限
 </p>
-<h2 id="运行容器">(5) 运行容器</h2>
-<p>接下来使用刚刚推送的镜像生成容器并运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查询北京天气</span><br>docker run --<span class="hljs-built_in">rm</span> weather-cli:1.0 Beijing<br><br><span class="hljs-comment"># 查询上海天气</span><br>docker run --<span class="hljs-built_in">rm</span> weather-cli:1.0 Shanghai<br></code></pre></td></tr></table></figure>
-<p>终端输出如下，说明程序正确运行：</p>
+<p><code>chmod a+x 1.log</code> 表示为所有用户增加 1.log 的执行权限</p>
+<p>权限也可以用数字表示：读为 4 ，写为 2 ，执行为 1 ；例如
+<code>chmod 777 1.log</code>表示所有用户现在都有了对文件的读、写、执行权限</p>
 <p><img
-src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754062537408.png" srcset="/img/loading.gif" lazyload /></p>
+src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754233451199.png" srcset="/img/loading.gif" lazyload /></p>
 <p class="image-caption">
-图 4：程序运行结果
+图 4：用数字表示权限
 </p>
+<h3 id="其他知识点">其他知识点</h3>
+<p><code>.</code>表示当前目录，<code>..</code>表示上级目录</p>
+<p>/home
+下存放了不同的用户文件夹，可用<code>adduser _userName</code>添加用户，用<code>deluser _userName</code>删除</p>
 
                 
               </div>
@@ -363,7 +418,7 @@ src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754062537408.pn
     
       <span class="category-chain">
         
-  <a href="/categories/docker/" class="category-chain-item">docker</a>
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
   
   
 
@@ -378,7 +433,7 @@ src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754062537408.pn
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/docker/" class="print-no-link">#docker</a>
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
       
     </div>
   
@@ -390,8 +445,8 @@ src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754062537408.pn
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Docker学习笔记(1)：镜像的构建与运行</div>
-      <div>http://wht0909.github.io/2025/08/01/Docker学习笔记-1-：镜像的构建与运行/</div>
+      <div>Linux学习笔记：常用命令</div>
+      <div>http://wht0909.github.io/2025/08/03/Linux学习笔记：常用命令/</div>
     </div>
     <div class="license-meta">
       
@@ -403,7 +458,7 @@ src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754062537408.pn
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>August 1, 2025</div>
+          <div>August 3, 2025</div>
         </div>
       
       
@@ -435,18 +490,12 @@ src="https://cdn.jsdelivr.net/gh/WHT0909/BlogImages@main/img/QQ_1754062537408.pn
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/03/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Linux学习笔记：常用命令">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux学习笔记：常用命令</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/01/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/" title="从零开始本地部署大模型">
-                        <span class="hidden-mobile">从零开始本地部署大模型</span>
+                      <a href="/2025/08/01/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1-%EF%BC%9A%E9%95%9C%E5%83%8F%E7%9A%84%E6%9E%84%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C/" title="Docker学习笔记(1)：镜像的构建与运行">
+                        <span class="hidden-mobile">Docker学习笔记(1)：镜像的构建与运行</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
